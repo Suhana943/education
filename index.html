@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educom - Digital Literacy Platform</title>
+    <title>Educom AI - Personalized Digital Literacy</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /* --- Base Styles & Variables --- */
 :root {
@@ -58,7 +57,7 @@ img {
 .flex {
     display: flex;
     align-items: center;
-    gap: 20px; /* Adjusted default gap for consistency */
+    gap: 20px;
 }
 
 .text-content {
@@ -67,7 +66,7 @@ img {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding: 20px; /* Adjusted padding */
+    padding: 20px;
 }
 
 .image-container {
@@ -78,11 +77,28 @@ img {
 }
 
 .section-title {
-    font-size: 2.5rem; /* Larger headings for sections */
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-dark);
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* Reduced margin for description */
+    display: flex; /* For icon alignment */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title .fas {
+    color: var(--primary-blue);
+    font-size: 0.9em;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
 }
 
 /* --- Buttons --- */
@@ -102,13 +118,13 @@ img {
 }
 
 .primary-btn:hover, .button-primary:hover {
-    background-color: #127ae0; /* Slightly darker blue */
+    background-color: #127ae0;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button-secondary {
-    background-color: var(--secondary-yellow); /* Example secondary button color */
+    background-color: var(--secondary-yellow);
     color: var(--text-light);
 }
 
@@ -118,12 +134,11 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 /* --- Header & Navigation --- */
 .main-header {
     background: linear-gradient(to bottom left, var(--light-blue-bg), white, white);
-    padding: 0 20px 40px; /* Added general padding */
-    position: relative; /* For absolute positioning of accents */
+    padding: 0 20px 40px;
+    position: relative;
 }
 
 .navbar {
@@ -153,12 +168,12 @@ img {
     font-weight: 500;
     color: var(--primary-blue);
     position: relative;
-    padding: 5px 0; /* Add padding for hover effect */
+    padding: 5px 0;
 }
 
 .nav-links li a:hover {
-    color: #0d6efd; /* Darker blue on hover */
-    text-decoration: underline; /* Subtle underline */
+    color: #0d6efd;
+    text-decoration: underline;
 }
 
 /* Dropdown Menu */
@@ -177,10 +192,15 @@ img {
     min-width: 150px;
     z-index: 10;
     padding: 10px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
 }
 
 .dropdown-menu.active {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .dropdown-menu li {
@@ -188,7 +208,7 @@ img {
     font-size: 0.95rem;
     color: var(--text-dark);
     font-weight: 400;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
 }
 
 .dropdown-menu li:hover {
@@ -202,19 +222,19 @@ img {
     transition: transform var(--transition-speed);
 }
 .dropdown-menu.active .dropdown-toggle .fas {
-    transform: rotate(180deg); /* Rotate arrow when active */
+    transform: rotate(180deg);
 }
 
 .hamburger-menu {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     font-size: 1.5rem;
     color: var(--primary-blue);
     cursor: pointer;
 }
 
-/* --- Hero Section (flex1) --- */
+/* --- Hero Section --- */
 .hero-section {
-    min-height: 500px; /* Ensures content has space */
+    min-height: 500px;
     margin-top: 30px;
 }
 
@@ -233,12 +253,12 @@ img {
 }
 
 .main-heading {
-    font-size: 3.5rem; /* Large and impactful */
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--primary-blue);
     line-height: 1.1;
     position: relative;
-    display: inline-block; /* To contain the accent img */
+    display: inline-block;
 }
 
 .description {
@@ -249,9 +269,9 @@ img {
 
 .accent-img {
     position: absolute;
-    width: 60px; /* Adjusted size */
-    opacity: 0.7; /* Slightly translucent */
-    z-index: -1; /* Behind text */
+    width: 60px;
+    opacity: 0.7;
+    z-index: -1;
 }
 
 .accent-top-left {
@@ -263,7 +283,7 @@ img {
 .accent-bottom-right {
     bottom: -20px;
     right: -50px;
-    width: 90px; /* Larger accent */
+    width: 90px;
 }
 
 .action-buttons {
@@ -315,28 +335,28 @@ img {
 /* --- Brand Showcase --- */
 .brand-showcase {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     padding: 30px 20px;
     background-color: rgb(243, 243, 232);
     gap: 40px;
-    min-height: 120px; /* Ensures minimum height */
+    min-height: 120px;
     margin-top: 40px;
-    border-radius: var(--border-radius-lg); /* Rounded corners for the section */
+    border-radius: var(--border-radius-lg);
 }
 
 .brand-showcase img {
     max-width: 140px;
-    width: auto; /* Allow natural sizing based on max-width */
-    height: 40px; /* Fixed height for consistency */
+    width: auto;
+    height: 40px;
     object-fit: contain;
-    filter: grayscale(80%); /* Subtle grayscale */
+    filter: grayscale(80%);
     transition: filter var(--transition-speed);
 }
 
 .brand-showcase img:hover {
-    filter: grayscale(0%); /* Full color on hover */
+    filter: grayscale(0%);
 }
 
 /* --- How it Works Section --- */
@@ -347,7 +367,7 @@ img {
 
 .work-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
     justify-content: center;
 }
@@ -360,8 +380,8 @@ img {
     padding: 30px;
     border-radius: var(--border-radius-lg);
     text-align: center;
-    min-height: 280px; /* Consistent height */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    min-height: 280px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
@@ -392,12 +412,12 @@ img {
 .card-purple { background-color: var(--light-purple-bg); }
 .card-red { background-color: var(--light-red-bg); }
 
-/* --- Access Section (p2) --- */
+/* --- Access Section --- */
 .access-section {
     padding: 80px 20px;
-    background-color: var(--light-blue-bg); /* Light blue background for this section */
+    background-color: var(--light-blue-bg);
     margin-top: 50px;
-    border-radius: var(--border-radius-lg); /* Rounded section */
+    border-radius: var(--border-radius-lg);
 }
 
 .quality-bullets {
@@ -412,8 +432,8 @@ img {
     gap: 30px;
 }
 
-/* --- Latest Courses Section (p3) --- */
-.latest-courses {
+/* --- Latest Courses Section & Recommended Courses Section --- */
+.latest-courses, .recommended-courses {
     padding: 80px 20px;
     text-align: center;
 }
@@ -423,8 +443,8 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px; /* Gap for wrapping items */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .course-header-info p {
@@ -436,7 +456,7 @@ img {
 
 .course-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for courses */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     justify-content: center;
 }
@@ -449,7 +469,7 @@ img {
     align-items: center;
     padding: 20px;
     text-align: center;
-    min-height: 350px; /* Consistent height */
+    min-height: 350px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
@@ -462,7 +482,7 @@ img {
 .card-image-wrapper {
     border-radius: var(--border-radius-md);
     width: 100%;
-    height: 180px; /* Fixed height for images */
+    height: 180px;
     overflow: hidden;
     margin-bottom: 15px;
 }
@@ -472,7 +492,7 @@ img {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 0.5s ease; /* Zoom effect */
+    transition: transform 0.5s ease;
 }
 
 .course-card:hover .card-image-wrapper img {
@@ -502,6 +522,146 @@ img {
     font-weight: 500;
 }
 
+/* --- Chatbot Styles --- */
+.chatbot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.chatbot-icon {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed);
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-window {
+    background-color: var(--text-light);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 320px; /* Standard chatbot width */
+    height: 400px; /* Standard chatbot height */
+    position: absolute;
+    bottom: 80px; /* Position above icon */
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    /* Hidden by default, slides up */
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+}
+
+.chatbot-window.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.chat-header {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-chat-btn:hover {
+    transform: rotate(90deg);
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+    background-color: #f7f7f7;
+}
+
+.message {
+    padding: 10px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.bot-message {
+    background-color: var(--light-blue-bg);
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+}
+
+.user-message {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    align-self: flex-end;
+    border-bottom-right-radius: 3px;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    background-color: var(--text-light);
+}
+
+.chat-input input {
+    flex-grow: 1;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-md);
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.chat-input button {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius-md);
+    padding: 8px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color var(--transition-speed);
+}
+
+.chat-input button:hover {
+    background-color: #127ae0;
+}
+
+
 /* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
     .main-heading {
@@ -523,16 +683,16 @@ img {
 
 @media (max-width: 768px) {
     .navbar {
-        flex-wrap: wrap; /* Allow wrapping */
+        flex-wrap: wrap;
         justify-content: space-between;
     }
     .nav-links {
-        display: none; /* Hide nav links by default on mobile */
+        display: none;
         flex-direction: column;
         width: 100%;
         background-color: var(--text-light);
         position: absolute;
-        top: 60px; /* Below navbar */
+        top: 60px;
         left: 0;
         padding: 15px 20px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -547,26 +707,26 @@ img {
         text-align: center;
     }
     .dropdown-menu {
-        position: static; /* Make dropdown behave inline */
+        position: static;
         box-shadow: none;
         background-color: transparent;
         padding: 0;
         margin-top: 5px;
     }
     .dropdown-menu li {
-        padding-left: 30px; /* Indent dropdown items */
+        padding-left: 30px;
         text-align: center;
     }
 
     .hamburger-menu {
-        display: block; /* Show hamburger icon */
+        display: block;
     }
     .navbar .primary-btn {
-        display: none; /* Hide sign-in button on small screens or move it to mobile menu */
+        display: none;
     }
 
     .hero-section {
-        flex-direction: column-reverse; /* Image above text on mobile */
+        flex-direction: column-reverse;
         text-align: center;
         min-height: auto;
     }
@@ -582,7 +742,7 @@ img {
         font-size: 2.5rem;
     }
     .accent-img {
-        display: none; /* Hide complex accents on very small screens */
+        display: none;
     }
 
     .action-buttons {
@@ -606,8 +766,13 @@ img {
         font-size: 2rem;
         margin-bottom: 30px;
     }
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
 
-    .how-it-works, .access-section, .latest-courses {
+
+    .how-it-works, .access-section, .latest-courses, .recommended-courses {
         padding: 50px 15px;
     }
 
@@ -623,7 +788,7 @@ img {
         margin-bottom: 20px;
     }
     .quality-bullets {
-        flex-direction: column; /* Stack bullet rows */
+        flex-direction: column;
         align-items: center;
         gap: 10px;
     }
@@ -640,10 +805,23 @@ img {
         margin: 0;
     }
     .course-cards-container {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
     }
     .course-card {
-        min-height: auto; /* Allow height to adjust */
+        min-height: auto;
+    }
+
+    /* Chatbot adjustments for smaller screens */
+    .chatbot-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .chatbot-window {
+        width: calc(100vw - 40px); /* Full width minus padding */
+        height: 350px;
+        bottom: 70px;
+        right: auto;
+        left: 20px; /* Align to left on mobile */
     }
 }
 
@@ -667,11 +845,11 @@ img {
         font-size: 0.9rem;
     }
     .action-buttons {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-direction: column;
         gap: 15px;
     }
     .btn {
-        width: 100%; /* Full width for stacked buttons */
+        width: 100%;
     }
     .feature-bullets {
         flex-direction: column;
@@ -694,7 +872,8 @@ img {
         font-size: 1.8rem;
     }
 }
-</style>
+    </style>
+</head>
 <body>
     <header class="main-header">
         <nav class="navbar">
@@ -712,9 +891,9 @@ img {
                 </li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
-            </ul>
+                <li><a href="#dashboard">My Dashboard</a></li> </ul>
             <button class="btn primary-btn">Sign In <i class="fas fa-arrow-right"></i></button>
-            <div class="hamburger-menu">
+            <div class="hamburger-menu" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
@@ -727,10 +906,10 @@ img {
                     </div>
                     <h1 class="main-heading">Digital Literacy<img src="https://itclickslearning.com/wp-content/uploads/2022/06/top-left-yellow-burst.png.png" alt="Yellow burst accent" class="accent-img accent-bottom-right"></h1>
                 </div>
-                <p class="description">A solution for easy and flexible online learning. Study anywhere through this platform and gain valuable skills. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quia esse nihil.</p>
+                <p class="description">A solution for easy and flexible online learning. Get personalized recommendations and learn anywhere through this platform to gain valuable, job-relevant skills.</p>
                 <div class="action-buttons">
                     <button class="btn button-primary">Get Started</button>
-                    <div class="play-button"><i class="fas fa-play"></i></div>
+                    <div class="play-button" aria-label="Watch intro video"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="feature-bullets">
                     <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Experienced Mentor</span></div>
@@ -739,7 +918,7 @@ img {
                 </div>
             </div>
             <div class="hero-image image-container">
-                <img src="https://cdn.prod.website-files.com/682d1c6b3c16bb956eafd6aa/682d1c6b3c16bb956eafdbb9_3d-tb-education.png" alt="3D illustration of education concepts">
+                <img src="https://cdn.prod.website-files.com/682d1c6b3c16bb956eafd6aa/682d1c6b3c16bb956eafdbb9_3d-tb-education.png" alt="3D illustration of education concepts, a person interacting with a tablet">
             </div>
         </section>
 
@@ -759,29 +938,29 @@ img {
                 <div class="work-card card-blue">
                     <img src="https://cdn-icons-png.flaticon.com/512/7358/7358735.png" alt="Set your plan icon">
                     <h3>Set Your Plan</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit dolores eaque, facilis libero nemo sint.</p>
+                    <p>Clearly define your learning objectives and career aspirations.</p>
                 </div>
                 <div class="work-card card-yellow">
                     <img src="https://cdn-icons-png.flaticon.com/512/6711/6711443.png" alt="Find your course icon">
                     <h3>Find Your Course</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit dolores eaque, facilis libero nemo sint.</p>
+                    <p>Discover courses tailored to your interests and skill level with AI recommendations.</p>
                 </div>
                 <div class="work-card card-purple">
                     <img src="https://cdn-icons-png.flaticon.com/512/2438/2438892.png" alt="Book your slot icon">
                     <h3>Book Your Slot</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit dolores eaque, facilis libero nemo sint.</p>
+                    <p>Easily reserve your spot in live sessions or access on-demand content.</p>
                 </div>
                 <div class="work-card card-red">
                     <img src="https://cdn-icons-png.flaticon.com/512/305/305116.png" alt="Get certificate icon">
                     <h3>Get Certificate</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit dolores eaque, facilis libero nemo sint.</p>
+                    <p>Complete your learning journey and earn industry-recognized certifications.</p>
                 </div>
             </div>
         </section>
 
         <section class="access-section flex">
             <div class="access-image image-container">
-                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/coworkers-doing-office-work-in-covid-time-3d-illustration-download-png-blend-fbx-gltf-file-formats--businessman-wearing-mask-environment-face-business-teamwork-pack-people-illustrations-4096743.png" alt="Coworkers working in office">
+                <img src="https://cdn3d.iconscout.com/3d/premium/thumb/coworkers-doing-office-work-in-covid-time-3d-illustration-download-png-blend-fbx-gltf-file-formats--businessman-wearing-mask-environment-face-business-teamwork-pack-people-illustrations-4096743.png" alt="Coworkers working collaboratively in an office setting during COVID-19">
             </div>
             <div class="access-content text-content">
                 <div class="heading-group">
@@ -790,15 +969,15 @@ img {
                     </div>
                     <h2 class="main-heading">for everyone</h2>
                 </div>
-                <p class="description">Easy secure access to digital learning resources should be the standard in education. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quia esse nihil.</p>
+                <p class="description">Easy, secure access to digital learning resources should be the standard in education. Our platform ensures everyone can reach their full potential.</p>
                 <div class="quality-bullets">
                     <div class="bullet-row">
-                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>World-class</span></div>
-                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Flexible</span></div>
+                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>World-class Content</span></div>
+                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Flexible Learning</span></div>
                     </div>
                     <div class="bullet-row">
-                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Affordable</span></div>
-                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Job-relevant</span></div>
+                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Affordable Programs</span></div>
+                        <div class="bullet-item"><i class="fas fa-check-circle"></i><span>Job-relevant Skills</span></div>
                     </div>
                 </div>
                 <div class="action-buttons">
@@ -810,37 +989,89 @@ img {
         <section class="latest-courses" id="courses">
             <h2 class="section-title">Our Latest Courses</h2>
             <div class="course-header-info">
-                <p>Choose from 500+ online video courses with new additions published every month.</p>
+                <p>Choose from 500+ online video courses with new additions published every month to stay ahead.</p>
                 <button class="btn button-secondary">View More</button>
             </div>
             <div class="course-cards-container">
                 <div class="course-card">
-                    <div class="card-image-wrapper"><img src="https://img.freepik.com/free-photo/working-with-device-lifestyle_23-2151848729.jpg?semt=ais_hybrid&w=740" alt="Person working on UI/UX design"></div>
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/free-photo/working-with-device-lifestyle_23-2151848729.jpg?semt=ais_hybrid&w=740" alt="Person working on UI/UX design on a laptop"></div>
                     <p class="course-category">UI/UX Course</p>
                     <h4 class="course-title">Figma training from beginner to pro course.</h4>
                     <p class="course-meta"><span>9h 20min</span> &bull; <span>14 lessons</span></p>
                 </div>
                 <div class="course-card">
-                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-is-engaged-her-work-laptop-warm-inviting-home-office-setting-woman-working-laptop-flat-illustration_585735-45663.jpg" alt="Woman coding on laptop"></div>
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-is-engaged-her-work-laptop-warm-inviting-home-office-setting-woman-working-laptop-flat-illustration_585735-45663.jpg" alt="Woman coding on a laptop in a home office"></div>
                     <p class="course-category">Coding Course</p>
                     <h4 class="course-title">Python coding teaching from beginner to pro.</h4>
                     <p class="course-meta"><span>9h 20min</span> &bull; <span>14 lessons</span></p>
                 </div>
                 <div class="course-card">
-                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/person-engages-with-laptop-studying-business-concepts-amidst-plants-books-cozy-setting-learn-business-with-laptop-flat-illustration_585735-41012.jpg" alt="Person learning digital marketing"></div>
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/person-engages-with-laptop-studying-business-concepts-amidst-plants-books-cozy-setting-learn-business-with-laptop-flat-illustration_585735-41012.jpg" alt="Person learning digital marketing on a laptop surrounded by books"></div>
                     <p class="course-category">DM Course</p>
                     <h4 class="course-title">Digital marketing course beginner to pro.</h4>
                     <p class="course-meta"><span>9h 20min</span> &bull; <span>14 lessons</span></p>
                 </div>
                 <div class="course-card">
-                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-sits-floor-with-her-laptop-studying-while-surrounded-by-colorful-books-plants-woman-studying-online-her-free-time-flat-illustration_585735-46614.jpg" alt="Woman studying Java"></div>
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-sits-floor-with-her-laptop-studying-while-surrounded-by-colorful-books-plants-woman-studying-online-her-free-time-flat-illustration_585735-46614.jpg" alt="Woman studying Java on the floor with a laptop"></div>
                     <p class="course-category">Java Course</p>
                     <h4 class="course-title">Java coding teaching from beginner to pro.</h4>
                     <p class="course-meta"><span>9h 20min</span> &bull; <span>14 lessons</span></p>
                 </div>
             </div>
         </section>
+
+        <section class="recommended-courses" id="recommended-courses">
+            <h2 class="section-title">Recommended For You <i class="fas fa-robot"></i></h2>
+            <p class="section-description">Our AI tailors these courses based on your interests and learning progress. Start your personalized journey!</p>
+            <div class="course-cards-container">
+                <div class="course-card">
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/free-photo/working-with-device-lifestyle_23-2151848729.jpg?semt=ais_hybrid&w=740" alt="Recommended UI/UX Design course"></div>
+                    <p class="course-category">AI Pick: UI/UX</p>
+                    <h4 class="course-title">Advanced Figma Techniques.</h4>
+                    <p class="course-meta"><span>12h 0min</span> &bull; <span>18 lessons</span></p>
+                </div>
+                <div class="course-card">
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-is-engaged-her-work-laptop-warm-inviting-home-office-setting-woman-working-laptop-flat-illustration_585735-45663.jpg" alt="Recommended Python Data Science course"></div>
+                    <p class="course-category">AI Pick: Data</p>
+                    <h4 class="course-title">Python for Data Science.</h4>
+                    <p class="course-meta"><span>15h 30min</span> &bull; <span>25 lessons</span></p>
+                </div>
+                 <div class="course-card">
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/person-engages-with-laptop-studying-business-concepts-amidst-plants-books-cozy-setting-learn-business-with-laptop-flat-illustration_585735-41012.jpg" alt="Recommended SEO course"></div>
+                    <p class="course-category">AI Pick: Marketing</p>
+                    <h4 class="course-title">SEO Strategies & Analytics.</h4>
+                    <p class="course-meta"><span>8h 45min</span> &bull; <span>12 lessons</span></p>
+                </div>
+                <div class="course-card">
+                    <div class="card-image-wrapper"><img src="https://img.freepik.com/premium-vector/woman-sits-floor-with-her-laptop-studying-while-surrounded-by-colorful-books-plants-woman-studying-online-her-free-time-flat-illustration_585735-46614.jpg" alt="Recommended Full Stack Development course"></div>
+                    <p class="course-category">AI Pick: Dev</p>
+                    <h4 class="course-title">Full Stack Web Development.</h4>
+                    <p class="course-meta"><span>20h 0min</span> &bull; <span>30 lessons</span></p>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <div class="chatbot-container">
+        <div class="chatbot-icon" aria-label="Open chat assistant">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chat-header">
+                <h3>Educom AI Assistant</h3>
+                <button class="close-chat-btn" aria-label="Close chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot-message">Hi there! How can I help you learn today?</div>
+                <div class="message bot-message">Try asking: "What courses are recommended for me?" or "How do I sign up?"</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="user-input">
+                <button id="send-chat-btn" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Simple JavaScript for dropdown functionality and hamburger menu
         document.addEventListener('DOMContentLoaded', () => {
@@ -848,17 +1079,27 @@ img {
             const dropdownMenu = document.querySelector('.dropdown-menu');
             const hamburgerMenu = document.querySelector('.hamburger-menu');
             const navLinks = document.querySelector('.nav-links');
+            const chatbotIcon = document.querySelector('.chatbot-icon');
+            const chatbotWindow = document.querySelector('.chatbot-window');
+            const closeChatBtn = document.querySelector('.close-chat-btn');
+            const userInput = document.getElementById('user-input');
+            const sendChatBtn = document.getElementById('send-chat-btn');
+            const chatMessages = document.querySelector('.chat-messages');
 
+            // --- Navigation ---
             if (dropdownToggle && dropdownMenu) {
                 dropdownToggle.addEventListener('click', (e) => {
                     e.preventDefault();
                     dropdownMenu.classList.toggle('active');
+                    // Add ARIA attributes for accessibility
+                    dropdownToggle.setAttribute('aria-expanded', dropdownMenu.classList.contains('active'));
                 });
 
                 // Close dropdown if clicking outside
                 document.addEventListener('click', (e) => {
                     if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                         dropdownMenu.classList.remove('active');
+                        dropdownToggle.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
@@ -866,8 +1107,67 @@ img {
             if (hamburgerMenu && navLinks) {
                 hamburgerMenu.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
+                    const isExpanded = navLinks.classList.contains('active');
+                    hamburgerMenu.setAttribute('aria-expanded', isExpanded);
                     hamburgerMenu.querySelector('i').classList.toggle('fa-bars');
                     hamburgerMenu.querySelector('i').classList.toggle('fa-times'); // Change to 'X' icon
+                });
+            }
+
+            // --- Chatbot Functionality ---
+            if (chatbotIcon && chatbotWindow && closeChatBtn && userInput && sendChatBtn && chatMessages) {
+                chatbotIcon.addEventListener('click', () => {
+                    chatbotWindow.classList.toggle('active');
+                    if (chatbotWindow.classList.contains('active')) {
+                        userInput.focus(); // Focus input when chat opens
+                    }
+                });
+
+                closeChatBtn.addEventListener('click', () => {
+                    chatbotWindow.classList.remove('active');
+                });
+
+                const sendUserMessage = () => {
+                    const message = userInput.value.trim();
+                    if (message) {
+                        // Display user message
+                        const userMsgDiv = document.createElement('div');
+                        userMsgDiv.classList.add('message', 'user-message');
+                        userMsgDiv.textContent = message;
+                        chatMessages.appendChild(userMsgDiv);
+
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                        // Simple AI-like response (mocked for hackathon)
+                        setTimeout(() => {
+                            let botResponse = "I'm sorry, I don't understand that yet. Please try asking about courses or sign-up.";
+                            if (message.toLowerCase().includes('recommended courses')) {
+                                botResponse = "Our AI suggests UI/UX Design and Python for Data Science based on your profile! Check out the 'Recommended For You' section.";
+                            } else if (message.toLowerCase().includes('sign up') || message.toLowerCase().includes('enroll')) {
+                                botResponse = "You can sign up by clicking the 'Sign In' button in the navigation bar and then selecting 'Register'.";
+                            } else if (message.toLowerCase().includes('hi') || message.toLowerCase().includes('hello')) {
+                                botResponse = "Hello! How can I assist your learning journey today?";
+                            } else if (message.toLowerCase().includes('latur')) {
+                                botResponse = "Educom is dedicated to empowering learners everywhere, including Latur! We're excited to help you upskill.";
+                            }
+
+                            const botMsgDiv = document.createElement('div');
+                            botMsgDiv.classList.add('message', 'bot-message');
+                            botMsgDiv.textContent = botResponse;
+                            chatMessages.appendChild(botMsgDiv);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }, 500); // Simulate processing time
+
+                        userInput.value = ''; // Clear input
+                    }
+                };
+
+                sendChatBtn.addEventListener('click', sendUserMessage);
+                userInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendUserMessage();
+                    }
                 });
             }
         });
