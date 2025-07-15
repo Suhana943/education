@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptiveLearn AI: Your Personalized Learning Companion</title>
+
+    <style>
+        /* General Body & Typography */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6; /* Light background for a clean look */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff; /* Primary blue color */
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Space between navigation items */
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Sections */
+        main {
+            padding: 30px 0;
+        }
+
+        section {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+
+        section h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hidden-section {
+            display: none; /* Used by JS to hide inactive sections */
+        }
+
+        /* Cards for Dashboard and Courses */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #0056b3;
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 15px;
+            margin-top: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #28a745; /* Green for progress */
+            border-radius: 5px;
+            width: 0%; /* Initial width, will be set by HTML/JS */
+            transition: width 0.5s ease-in-out;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+        }
+
+        .card ul li a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .card ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Success green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .course-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .course-card h4 {
+            margin-top: 0;
+            color: #0056b3;
+            font-size: 1.2em;
+        }
+
+        .course-card button {
+            background-color: #17a2b8; /* Info blue */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-card button:hover {
+            background-color: #138496;
+        }
+
+        /* AI Tutor Chat */
+        .chat-container {
+            background-color: #f0f2f5;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            max-height: 600px;
+            overflow: hidden;
+            position: relative; /* For input positioning */
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px; /* For scrollbar spacing */
+            margin-bottom: 15px;
+        }
+
+        .message {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user-message {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end; /* Push to right */
+            margin-left: auto; /* Push to right */
+            border-bottom-right-radius: 2px; /* For a chat bubble look */
+        }
+
+        .message.system-message {
+            background-color: #f8f9fa;
+            color: #333;
+            align-self: flex-start; /* Push to left */
+            margin-right: auto; /* Push to left */
+            border-bottom-left-radius: 2px; /* For a chat bubble look */
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .chat-input input[type="text"] {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 20px;
+            font-size: 1em;
+        }
+
+        .chat-input button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Progress Charts (placeholders for canvas) */
+        .progress-charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .chart-area {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chart-area canvas {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+        }
+
+        .detailed-feedback {
+            background-color: #e9f7fe;
+            border: 1px solid #bee5eb;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .detailed-feedback h3 {
+            color: #0056b3;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Settings Form */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group select {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #343a40; /* Dark grey */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design (Media Queries) */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+                font-size: 0.9em;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .dashboard-grid,
+            .course-list,
+            .progress-charts {
+                grid-template-columns: 1fr; /* Single column layout on small screens */
+            }
+
+            .chat-input {
+                flex-direction: column;
+            }
+
+            .chat-input button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AdaptiveLearn AI</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active">Dashboard</a></li>
+                    <li><a href="#courses">My Courses</a></li>
+                    <li><a href="#tutor">AI Tutor</a></li>
+                    <li><a href="#progress">Progress</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="#logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="dashboard" class="active-section">
+            <h2>Welcome, [Student Name]!</h2>
+            <div class="dashboard-grid">
+                <div class="card learning-path">
+                    <h3>Your Current Learning Path</h3>
+                    <p>Continue with: **[Recommended Topic/Lesson]**</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 75%;"></div>
+                        <span class="progress-text">75% Complete in [Current Subject]</span>
+                    </div>
+                    <button class="cta-button">Resume Learning</button>
+                </div>
+                <div class="card recommendations">
+                    <h3>Personalized Recommendations</h3>
+                    <ul>
+                        <li><a href="#">Video: [Weakness Topic] Explained</a></li>
+                        <li><a href="#">Practice Quiz: [Challenging Concept]</a></li>
+                        <li><a href="#">Article: Advanced [Related Subject]</a></li>
+                    </ul>
+                </div>
+                <div class="card recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li>Completed "Algebra Basics Quiz" - Score: 85%</li>
+                        <li>Reviewed "Newton's Laws of Motion"</li>
+                        <li>Started "Introduction to Indian History"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="hidden-section">
+            <h2>My Enrolled Courses</h2>
+            <div class="course-list">
+                <div class="course-card">
+                    <h4>Mathematics Grade 10</h4>
+                    <p>Current Module: Trigonometry</p>
+                    <button>View Course</button>
+                </div>
+                <div class="course-card">
+                    <h4>Science: Physics & Chemistry</h4>
+                    <p>Current Module: Chemical Reactions</p>
+                    <button>View Course</button>
+                </div>
+                <div class="course-card">
+                    <h4>History of India: Ancient to Modern</h4>
+                    <p>Current Module: Mughal Empire</p>
+                    <button>View Course</button>
+                </div>
+                </div>
+        </section>
+
+        <section id="tutor" class="hidden-section">
+            <h2>AI Tutor Assistant</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message system-message">
+                        <p>Hello! How can I help you today? Ask me anything about your courses, or a specific concept you're struggling with.</p>
+                    </div>
+                    </div>
+                <div class="chat-input">
+                    <input type="text" id="tutorInput" placeholder="Type your question here...">
+                    <button id="sendTutorMessage">Send</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress" class="hidden-section">
+            <h2>Your Learning Progress</h2>
+            <div class="progress-charts">
+                <div class="chart-area">
+                    <h3>Performance by Subject</h3>
+                    <canvas id="subjectPerformanceChart"></canvas>
+                </div>
+                <div class="chart-area">
+                    <h3>Mastery Level Over Time</h3>
+                    <canvas id="masteryOverTimeChart"></canvas>
+                </div>
+            </div>
+            <div class="detailed-feedback">
+                <h3>Detailed Feedback</h3>
+                <p>Based on your recent performance in Mathematics, focus on **Geometry theorems** and **problem-solving strategies** for word problems.</p>
+                <p>Your understanding of **Photosynthesis** in Science is strong. Consider moving to the next module: **Respiration**.</p>
+            </div>
+        </section>
+
+        <section id="settings" class="hidden-section">
+            <h2>Settings</h2>
+            <form>
+                <div class="form-group">
+                    <label for="learningStyle">Preferred Learning Style:</label>
+                    <select id="learningStyle" name="learningStyle">
+                        <option value="visual">Visual</option>
+                        <option value="auditory">Auditory</option>
+                        <option value="kinesthetic">Kinesthetic</option>
+                        <option value="reading-writing">Reading/Writing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notificationFrequency">Notification Frequency:</label>
+                    <select id="notificationFrequency" name="notificationFrequency">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+                <button type="submit">Save Settings</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AdaptiveLearn AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('main section');
+            const chatMessagesContainer = document.getElementById('chatMessages');
+            const tutorInput = document.getElementById('tutorInput');
+            const sendTutorMessageButton = document.getElementById('sendTutorMessage');
+
+            // Function to show/hide sections
+            const showSection = (id) => {
+                sections.forEach(section => {
+                    if (section.id === id) {
+                        section.classList.remove('hidden-section');
+                        section.classList.add('active-section'); // Add active class for styling if needed
+                    } else {
+                        section.classList.add('hidden-section');
+                        section.classList.remove('active-section');
+                    }
+                });
+
+                // Update active navigation link
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            };
+
+            // Event listeners for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default anchor link behavior
+                    const targetId = link.getAttribute('href').substring(1); // Get section ID from href
+                    showSection(targetId);
+                });
+            });
+
+            // --- AI Tutor Chat Logic (Simulated) ---
+            const addMessage = (text, sender) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(sender === 'user' ? 'user-message' : 'system-message');
+                messageDiv.innerHTML = `<p>${text}</p>`;
+                chatMessagesContainer.appendChild(messageDiv);
+                // Scroll to the bottom of the chat
+                chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            };
+
+            const simulateAITutorResponse = (userMessage) => {
+                let response = "I'm sorry, I don't understand that yet. Can you please rephrase or ask about a specific topic from your courses?";
+
+                if (userMessage.toLowerCase().includes('hello') || userMessage.toLowerCase().includes('hi')) {
+                    response = "Hello! How can I assist you with your learning today?";
+                } else if (userMessage.toLowerCase().includes('math') || userMessage.toLowerCase().includes('algebra')) {
+                    response = "Great! What specific concept in Math or Algebra are you struggling with?";
+                } else if (userMessage.toLowerCase().includes('history') || userMessage.toLowerCase().includes('mughal')) {
+                    response = "The Mughal Empire was a powerful empire in the Indian subcontinent. What would you like to know about it?";
+                } else if (userMessage.toLowerCase().includes('recommend')) {
+                    response = "Based on your progress, I recommend reviewing Geometry theorems and practicing more word problems in Math. Would you like a practice set?";
+                } else if (userMessage.toLowerCase().includes('feedback')) {
+                    response = "Your understanding of Photosynthesis is strong. Let's try the next module on Respiration. For Mathematics, more practice on Geometry is recommended.";
+                }
+
+                // Simulate a delay for the AI response
+                setTimeout(() => {
+                    addMessage(response, 'system');
+                }, 800); // 0.8 second delay
+            };
+
+            const handleSendMessage = () => {
+                const userMessage = tutorInput.value.trim();
+                if (userMessage) {
+                    addMessage(userMessage, 'user');
+                    simulateAITutorResponse(userMessage);
+                    tutorInput.value = ''; // Clear input field
+                }
+            };
+
+            sendTutorMessageButton.addEventListener('click', handleSendMessage);
+
+            tutorInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    handleSendMessage();
+                }
+            });
+
+            // --- Progress Chart Integration (using Chart.js as an example) ---
+            // You would typically fetch real data from your backend here.
+            const renderCharts = () => {
+                const subjectPerformanceCtx = document.getElementById('subjectPerformanceChart');
+                const masteryOverTimeCtx = document.getElementById('masteryOverTimeChart');
+
+                // Check if canvas elements exist before trying to create charts
+                if (subjectPerformanceCtx && masteryOverTimeCtx) {
+                    // Chart.js is loaded via CDN in the <head>
+                    if (typeof Chart === 'undefined') {
+                         console.error("Chart.js not loaded. Progress charts will not render. Ensure Chart.js CDN is correctly linked.");
+                         return;
+                    }
+
+                    // Subject Performance Chart (Bar Chart)
+                    new Chart(subjectPerformanceCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Math', 'Science', 'History', 'English'],
+                            datasets: [{
+                                label: 'Average Score (%)',
+                                data: [78, 92, 70, 85], // Example data
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+
+                    // Mastery Level Over Time Chart (Line Chart)
+                    new Chart(masteryOverTimeCtx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                            datasets: [{
+                                label: 'Mastery Level (0-100%)',
+                                data: [60, 65, 70, 75, 80], // Example data
+                                borderColor: '#28a745',
+                                backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                                fill: true,
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+                }
+            };
+
+            // Initial load: Show dashboard and render charts
+            showSection('dashboard');
+            renderCharts(); // Call renderCharts after the DOM is ready
+        });
+    </script>
+</body>
+</html>
